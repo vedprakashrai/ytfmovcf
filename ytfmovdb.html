@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>YT Movie Hub</title>
+</head>
+
+<body>
+    <div class="preloader" id="preloader">
+        <div class="loader"></div>
+    </div>
+    <div class="modal videomodal fade" id="ytModal" tabindex="-1" role="dialog" aria-labelledby="ytModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-fullscreen" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">  
+                <p id="modalHeader"></p>   
+              <!-- 16:9 aspect ratio -->
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" frameborder="0" allowfullscreen="true"></iframe>
+                </div>
+            </div>
+         </div>
+    </div>
+    </div>
+   
+
+
+    <section class="category-buttons ">
+        <div class="buttons">
+            <button id="active-btn">All</button><button class="category-btn">Action</button><button class="category-btn">Comedy</button><button class="category-btn">Series</button><button class="category-btn">Adventure</button><button>Others</button>
+        </div>
+    </section>
+
+
+    <section class="cards-collection">
+        <div class="cards" id = "cards">
+            <!-- cards here -->
+        </div>
+    </section>
+    <section class="footer">
+        <div class="category-header">
+            <h1 class="view-all">Movie Hub</h1>
+            <h1 class="view-all">Follow us on <i class="fa-brands fa-facebook-f"></i> <i class="fa-brands fa-instagram"></i> <i class="fa-brands fa-threads"></i> <i class="fa-brands fa-twitter"></i> <i class="fa-brands fa-youtube"></i></h1>
+        </div>
+        <hr>
+        <div class="footer-cards">
+            <div class="footer-card">
+                <h1>Movies</h1>
+                <h2>Action</h2>
+                <h2>Comedy</h2>
+                <h2>Horror</h2>
+                <h2>Animation</h2>
+                <h2>Fantasy</h2>
+            </div>
+            <div class="footer-card">
+                <h1>Series</h1>
+                <h2>Reality Shows</h2>
+                <h2>Classic Shows</h2>
+                <h2>Valentine Shows</h2>
+                <h2>Comedy</h2>
+                <h2>Fantasy</h2>
+            </div>
+            <div class="footer-card">
+                <h1>Support</h1>
+                <h2>General Info</h2>
+                <h2>Privacy Policy</h2>
+                <h2>Terms of service</h2>
+                <h2>Help Center</h2>
+            </div>
+            <div class="footer-card">
+                <h1>Support</h1>
+                <h2>aakshata@gmail.com</h2>
+                <h2>Tel: ****</h2>
+
+            </div>
+
+        </div>
+    </section>
+    <script  type="module" src="./js/appLocal.js"></script>
+    </body>
+  </html>
