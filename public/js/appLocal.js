@@ -19,11 +19,16 @@ function expandPP(spath,title,year){
   }
   fpath+= spath[0]+"/" +spath[1] +spath[2] +"/";
   spath = spath.slice(3);
-  fpath+=  spath.replace("&",title.replaceAll(" ","_"),).replace("=","poster").replace("!","Poster")
-  .replace("+","film").replace(",","Film").replace("*",".jpg").replace("^",".JPG").replace("?",".jpeg").replace("~",year);
+  fpath+=  spath.replace("&",title.replaceAll(" ","_"),)
+  .replace("=","poster").replace("!","Poster")
+  .replace("+","film").replace(",","Film")
+  .replace("*",".jpg") .replace("<","movie")
+  .replace(">","Movie").replace("^",".JPG")
+  .replace("?",".jpeg").replace("~",year);
 
-  return /*"https://upload.wikimedia.org/wikipedia/"+*/fpath +"/220px-"+fpath.split("/").slice(-1);
+  return "https://upload.wikimedia.org/wikipedia/"+fpath +"/220px-"+fpath.split("/").slice(-1);
 }
+
 
 var tooltip=function (u) {
   var n;
@@ -124,10 +129,7 @@ function renderPage(page){
    }
 }
 
-
- 
-
-   function getNewDivTemplate(mov){
+function getNewDivTemplate(mov){
     //data-bs-toggle="modal" data-bs-target="#ytModal" 
     var div=
     `<div class="movie-item item">
@@ -135,7 +137,7 @@ function renderPage(page){
       <a class="cover tooltipstered" data-tip="71085?/cachead31"  onclick = "openYT('${mov.yt}','${+mov.tplus}','${mov.original_title}');">
         <div>
           <img class=" ls-is-cached lazyloaded" 
-            src="${"https://upload.wikimedia.org/wikipedia/"+mov.poster_pathte}" alt= "${mov.original_title}">
+            src="${"https://upload.wikimedia.org/wikipedia/"+ mov.poster_path}" alt= "${mov.original_title}">
         </div>
      </a>
       <div class="detail">
