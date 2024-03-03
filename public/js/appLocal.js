@@ -137,7 +137,7 @@ function getNewDivTemplate(mov){
       <a class="cover tooltipstered" data-tip="71085?/cachead31"  onclick = "openYT('${mov.yt}','${+mov.tplus}','${mov.original_title}');">
         <div>
           <img class=" ls-is-cached lazyloaded" 
-            src="${"https://upload.wikimedia.org/wikipedia/"+ mov.poster_path}" alt= "${mov.original_title}">
+            src="${mov.poster_path}" alt= "${mov.original_title}">
         </div>
      </a>
       <div class="detail">
