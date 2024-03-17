@@ -10,9 +10,11 @@ let  genres = "$genres$";
 var categories=["Classic","50s","60s","70s","80s","90s","00s","10s","20s","High Rated","Latest","Art","Most Watched","Memetic","Black and White","New Arrival"]
 
 function expandPP(spath,title,year){
+  if(!spath) 
+    return "";
   var fpath = "";
   if(spath.indexOf('@')===0){
-      fpath+='common/';
+      fpath+='commons/thumb/';
       spath=spath.slice(1);
   }else{
       fpath+='en/thumb/'; 
@@ -46,15 +48,12 @@ var tooltip=function (u) {
       maxWidth: 320,
       content: "",
       functionBefore: function (n, t) {
-        var o = {
-          dataType: "html"
-        };
         if (!h) {
           h = true;
          /* $.ajax("ajax/film/tooltip/".concat(u.data("tip")), o).done(function (t) {
             return n.content(t);
           }); */
-          $.ajax("tooltip.html", {dataType: "html" }).done(function (t) {
+          $.ajax("tooltips/".concat(u.data("tip")).concat(".html"), {dataType: "html" }).done(function (t) {
             return n.content(t);
           });
         }
@@ -72,7 +71,6 @@ var tooltip=function (u) {
     }).tooltipster("instance")).on("before", i = function () {
       setTimeout(function () {
         try {
-          0;
           $(u.tooltipster("elementTooltip")).activate();
         } catch (t) {}
       }, 10);
@@ -103,9 +101,9 @@ moviedb.forEach(mo=>{
   let movie = {};
   props.forEach(p=>{
       movie[p] = mo[props.indexOf(p)];
-})
-
-movies.push(movie);
+      })
+  movie.tooltip= movie.original_title.replaceAll(' ','').replace(/[^a-zA-Z 0-9]+/g, '')+movie.year_of_release;
+  movies.push(movie);
 });
 
 allMovies =[...movies];
@@ -128,7 +126,7 @@ function renderPage(page){
  // if(!!document.getElementById("cards") && !!document.getElementById("cards").children())
    document.getElementById("cards").innerHTML='';
    
-   if(!page ||   !page.length){
+   if(!page || !page.length){
     document.getElementById("cards").insertAdjacentHTML('beforeend',"<h3>No Results</h3>");
    }else{
     page.forEach(d=>document.getElementById("cards").insertAdjacentHTML('beforeend',getNewDivTemplate(d)));
@@ -140,7 +138,7 @@ function getNewDivTemplate(mov){
     var div=
     `<div class="movie-item item">
     <div class="item-inner">
-      <a class="cover tooltipstered" data-tip="71085?/cachead31"  onclick = "openYT('${mov.yt}','${+mov.tplus}','${mov.original_title}');">
+      <a class="cover tooltipstered" data-tip="${mov.tooltip}"  onclick = "openYT('${mov.yt}','${+mov.tplus}','${mov.original_title}');">
         <div>
           <img class=" ls-is-cached lazyloaded" 
             src="${mov.poster_path}" alt= "${mov.original_title}">
