@@ -43,7 +43,7 @@ var tooltip=function (u) {
       arrow: false,
       side: ["right", "left"],
       interactive: true,
-      delay: 500,
+      delay: 600,
       minWidth: 320,
       maxWidth: 320,
       content: "",
@@ -53,7 +53,7 @@ var tooltip=function (u) {
          /* $.ajax("ajax/film/tooltip/".concat(u.data("tip")), o).done(function (t) {
             return n.content(t);
           }); */
-          $.ajax("tooltips/".concat(u.data("tip")).concat(".html"), {dataType: "html" }).done(function (t) {
+          $.ajax("tooltips/".concat(u.data("tip"))/*.concat(".html") cloudflare*/, {dataType: "html" }).done(function (t) {
             return n.content(t);
           });
         }
