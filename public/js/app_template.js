@@ -46,7 +46,7 @@ var tooltip=function (u) {
       delay: 600,
       minWidth: 320,
       maxWidth: 320,
-      content: "",
+      content: "Loading..",
       functionBefore: function (n, t) {
         if (!h) {
           h = true;
