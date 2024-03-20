@@ -117,7 +117,7 @@ window.addEventListener('load', () => {
   let pageSize = 32;
   let pages = paginate(movies, pageSize);
   createPagination(pages.length);
-  document.querySelectorAll('.tooltipstered').forEach(e=>tooltip($(e)));
+ // document.querySelectorAll('.tooltipstered').forEach(e=>tooltip($(e)));
   //renderPage(pages[0]);
 
 //movies.forEach(d=>document.getElementById("cards").insertAdjacentHTML('beforeend',getNewDiv(d)));
@@ -130,6 +130,7 @@ function renderPage(page){
     document.getElementById("cards").insertAdjacentHTML('beforeend',"<h3>No Results</h3>");
    }else{
     page.forEach(d=>document.getElementById("cards").insertAdjacentHTML('beforeend',getNewDivTemplate(d)));
+    document.querySelectorAll('.tooltipstered').forEach(e=>tooltip($(e)));
    }
 }
 
@@ -246,7 +247,7 @@ var change = function (n) {
     //renderPage(pages[0]);
     $('#pagination').twbsPagination('destroy');
     createPagination(pages.length);
-    document.querySelectorAll('.tooltipstered').forEach(e=>tooltip($(e)));
+   // document.querySelectorAll('.tooltipstered').forEach(e=>tooltip($(e)));
   }
 
   function searchAll(){
@@ -270,7 +271,7 @@ var change = function (n) {
     //renderPage(pages[0]);
     $('#pagination').twbsPagination('destroy');
     createPagination(pages.length);
-    document.querySelectorAll('.tooltipstered').forEach(e=>tooltip($(e)));
+   // document.querySelectorAll('.tooltipstered').forEach(e=>tooltip($(e)));
     
   }
 
