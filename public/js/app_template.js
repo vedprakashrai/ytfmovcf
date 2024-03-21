@@ -255,6 +255,7 @@ var change = function (n) {
     var searchText =document.getElementsByName("keyword")[0].value ;
     var searchIn =  document.getElementById("searchIn").innerHTML;
     if(searchText.length){
+      movies = [...allMovies];
       switch (searchIn){
         case "Title":
           movies = movies.filter(movie=>~movie.original_title.toUpperCase().indexOf(searchText.toUpperCase()));
