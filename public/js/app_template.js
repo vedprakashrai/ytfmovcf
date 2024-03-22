@@ -22,8 +22,8 @@ function expandPP(spath,title,year){
   fpath+= spath[0]+"/" +spath[1] +spath[2] +"/";
   spath = spath.slice(3);
   fpath+=  spath.replace("&",title.replaceAll(" ","_"),)
-  .replace("=","poster").replace("!","Poster")
-  .replace("+","film").replace(",","Film")
+  .replaceAll("=","poster").replaceAll("!","Poster")
+  .replaceAll("+","film").replaceAll(",","Film")
   .replace("*",".jpg") .replace("<","movie")
   .replace(">","Movie").replace("^",".JPG")
   .replace("?",".jpeg").replace("~",year);
