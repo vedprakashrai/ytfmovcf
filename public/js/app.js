@@ -23,9 +23,9 @@ function expandPP(spath,title,year){
   fpath+=  spath.replace("&",title.replaceAll(" ","_"),)
   .replaceAll("=","poster").replaceAll("!","Poster")
   .replaceAll("+","film").replaceAll(",","Film")
-  .replace("*",".jpg") .replace("<","movie")
-  .replace(">","Movie").replace("^",".JPG")
-  .replace("?",".jpeg").replace("~",year);
+  .replace("*",".jpg") .replaceAll("<","movie")
+  .replaceAll(">","Movie").replace("^",".JPG")
+  .replace("?",".jpeg").replaceAll("~",year);
 
   return "https://upload.wikimedia.org/wikipedia/"+fpath +"/220px-"+fpath.split("/").slice(-1);
 }
