@@ -11,6 +11,8 @@ var categories=["Classic","50s","60s","70s","80s","90s","00s","10s","20s","High 
 function expandPP(spath,title,year){
   if(!spath) 
     return "";
+  if(spath.indexOf('http')>-1)
+    return spath;
   var fpath = "";
   if(spath.indexOf('@')===0){
       fpath+='commons/thumb/';
@@ -178,7 +180,7 @@ function getNewDivTemplate(mov){
             renderPage(pages[pageNumber-1]);
         }
     }).on('page', function (event, page) {
-        console.info(page + ' (from event listening)');
+      //  console.info(page + ' (from event listening)');
     });
    }
 
