@@ -12,8 +12,9 @@ var categories=["Classic","50s","60s","70s","80s","90s","00s","10s","20s","High 
 function expandPP(spath,title,year){
   if(!spath) 
     return "";
-  if(spath.indexOf('http')>-1)
-    return spath;
+  if(!isNaN(spath)){
+    return "./posters/"+spath;
+  }
   var fpath = "";
   if(spath.indexOf('@')===0){
       fpath+='commons/thumb/';
