@@ -14746,7 +14746,7 @@ footer .footer-mid .top-btn {
 
 .tooltipster-sidetip .tooltipster-box .tooltipster-content .description {
     margin: 1.3rem 0;
-    color: rgba(239, 223, 214, .5);
+    color: rgba(239, 223, 214, 1);
     font-size: .875rem;
     display: -webkit-box;
     -webkit-line-clamp: 4;
@@ -14764,6 +14764,15 @@ footer .footer-mid .top-btn {
     display: inline-block;
     background: #111;
     color: rgba(239, 223, 214, .5);
+    font-size: .875rem;
+    padding: .3rem .7rem;
+    border-radius: 50rem
+}
+
+.tooltipster-sidetip .tooltipster-box .tooltipster-content .genre p {
+    display: inline-block;
+    background: #111;
+    color: rgba(239, 223, 214, 1);
     font-size: .875rem;
     padding: .3rem .7rem;
     border-radius: 50rem
