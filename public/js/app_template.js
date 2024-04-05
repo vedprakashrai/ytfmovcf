@@ -1,9 +1,10 @@
-let props = ["original_title","year_of_release","genres","imdb_rating","actors","yt","poster_path","tplus"];
+let props = ["original_title","year_of_release","genres","imdb_rating","actors","director","yt","poster_path","tplus"];
 
 let  moviedb= "$moviedb$";
 
 
 let actorsFreq = "$actorsFreq$";
+let dirFreq = "$dirFreq$";
 
 let  genres = "$genres$";
 
@@ -35,18 +36,18 @@ function expandPP(spath,title,year){
 }
 
 
-var tooltip=function (u) {
+var tooltip=function (ele) {
   var n;
   var i;
   var h = false;
   if (!(window.innerWidth < 1024)) {
-    (n = u.tooltipster({
+    (n = ele.tooltipster({
       contentAsHTML: true,
       updateAnimation: false,
       arrow: false,
       side: ["right", "left"],
       interactive: true,
-      delay: 600,
+      delay: 200,
       minWidth: 320,
       maxWidth: 320,
       content: "Loading..",
@@ -74,7 +75,7 @@ var tooltip=function (u) {
     }).tooltipster("instance")).on("before", i = function () {
       setTimeout(function () {
         try {
-          $(u.tooltipster("elementTooltip")).activate();
+          $(ele.tooltipster("elementTooltip")).activate();
         } catch (t) {}
       }, 10);
     });
@@ -88,16 +89,17 @@ let allMovies = [];
 
 moviedb.forEach(mo=>{
 
-  mo[4] = mo[4].split("|").map(m=>actorsFreq.indexOf(m)>-1?actorsFreq[m]:m);
+  mo[4] = mo[4].split("|").map(m=>!isNaN(m)?actorsFreq[m]:m);
+  mo[5] = mo[5].split("|").map(m=>!isNaN(m)?dirFreq[m]:m);
   mo[2] = mo[2].split("|").map(m=>genres[m]);
   mo[1] = mo[1]>30?1900+mo[1]:2000+mo[1];
-  if(mo.length==6)
+  if(mo.length==7)
     {
       mo.push('');
     }else{
-      mo[6] = expandPP(mo[6],mo[0],mo[1]);
+      mo[7] = expandPP(mo[7],mo[0],mo[1]);
     }
-  if(mo.length==7)
+  if(mo.length==8)
     {
       mo.push(0);
     }
@@ -109,7 +111,8 @@ moviedb.forEach(mo=>{
   movies.push(movie);
 });
 
-allMovies =[...movies];
+allMovies =sort([...movies],"imdb_rating");
+
 
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
@@ -118,7 +121,7 @@ window.addEventListener('load', () => {
   });
 
   let pageSize = 32;
-  let pages = paginate(movies, pageSize);
+  let pages = paginate(allMovies, pageSize);
   createPagination(pages.length);
  // document.querySelectorAll('.tooltipstered').forEach(e=>tooltip($(e)));
   //renderPage(pages[0]);
@@ -142,7 +145,7 @@ function getNewDivTemplate(mov){
     var div=
     `<div class="movie-item item">
     <div class="item-inner">
-      <a class="cover tooltipstered" data-tip="${mov.tooltip}"  onclick = "openYT('${mov.yt}','${+mov.tplus}','${mov.original_title}');">
+      <a class="cover tooltipstered" data-tip="${mov.tooltip}"  onclick = "openYT('${mov.yt}','${mov.tplus}','${mov.original_title}');">
         <div>
           <img class=" ls-is-cached lazyloaded" 
             src="${mov.poster_path}" alt= "${mov.original_title}">
@@ -245,7 +248,7 @@ var change = function (n) {
     }else{
     //  movies = [...allMovies];
     }
-    movies =  sort(movies);
+    movies =  sort(movies,document.querySelector('input[name=sort]:checked')?.value);
     pages = paginate(movies, pageSize);
     //renderPage(pages[0]);
     $('#pagination').twbsPagination('destroy');
@@ -264,8 +267,15 @@ var change = function (n) {
           movies = movies.filter(movie=>~movie.original_title.toUpperCase().indexOf(searchText.toUpperCase()));
           break;
         case "Actor": {
-         // var actorIndex = actorsFreq.indexOf(searchText);
-          movies = movies.filter(movie=>movie.actors.filter(actor=>!!actor && actor.toUpperCase()==searchText.toUpperCase()).length>0);
+            // var actorIndex = actorsFreq.indexOf(searchText);
+            movies = movies.filter(movie=>movie.actors.filter(actor=>!!actor && ~actor.toUpperCase().indexOf(searchText.toUpperCase())).length>0);
+            break;
+          }
+         
+        case "Director": {
+            // var actorIndex = actorsFreq.indexOf(searchText);
+            movies = movies.filter(movie=>movie.director.filter(director=>!!director && ~director.toUpperCase().indexOf(searchText.toUpperCase())).length>0);
+            break;
           }
         }
     }else if(movies.length!=allMovies.length){
@@ -279,9 +289,7 @@ var change = function (n) {
     
   }
 
-    function sort(movs){
-      var sortEle = document.querySelector('input[name=sort]:checked');
-      var sortBy = sortEle?.value;
+    function sort(movs,sortBy){
       if(!!sortBy){
 
         if(sortBy=="original_title"){
@@ -289,7 +297,7 @@ var change = function (n) {
         }else{
          movs.sort((a,b)=>a[sortBy]-b[sortBy]);
         }
-         if(sortBy==="imdb_rating")
+         if(sortBy==="imdb_rating") //decending for rating
           movs.reverse();
       }
       return movs;
