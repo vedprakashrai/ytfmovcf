@@ -57,7 +57,7 @@ var tooltip=function (ele) {
          /* $.ajax("ajax/film/tooltip/".concat(u.data("tip")), o).done(function (t) {
             return n.content(t);
           }); */
-          $.ajax("tooltips/".concat(u.data("tip"))/*.concat(".html") cloudflare*/, {dataType: "html" }).done(function (t) {
+          $.ajax("tooltips/".concat(ele.data("tip"))/*.concat(".html") cloudflare*/, {dataType: "html" }).done(function (t) {
             return n.content(t);
           });
         }
