@@ -12991,7 +12991,7 @@ header .navbar .logo {
 }
 
 header .navbar .logo img {
-    height: 1.9rem
+    margin-bottom: .2em
 }
 
 header .navbar #menu {
