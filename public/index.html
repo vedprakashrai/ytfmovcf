@@ -13,14 +13,13 @@
   <link rel="canonical" href="#">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Filter, Search Movies ">
-  <meta property="og:description"
-    content="Filter, Search movies on YT with our  search - filter system">
+  <meta property="og:description" content="Filter, Search movies on YouTube with our  search - filter system">
   <meta property="og:image:width" content="650">
   <meta property="og:image:height" content="350">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
-  <link rel="manifest" href="./js/manifest.json?v3">
+  <link rel="manifest" href="./js/manifest.json">
  <link rel="stylesheet" type="text/css" href="./css/tooltipster.bundle.min.css">
   <!-- <link href="./css/css2.html" rel="stylesheet">
   <link href="./css/all.min.css" rel="stylesheet">-->
@@ -36,9 +35,9 @@
   <div class="wrapper">
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark"> 
-        <button class="navbar-toggler mr-2" type="button"  data-toggle="collapse" data-target="#menu"> 
+        <!--<button class="navbar-toggler mr-2" type="button"  data-toggle="collapse" data-target="#menu"> 
           <i class="fa fa-bars"></i> 
-        </button> 
+        </button>  -->
         <a class="logo" href="#"  style="font-size: x-large;" >
           <img src="./images/icons8-play-flaticons-flat-32.png" alt="Purana Hall">Purana Hall</a>
        <!--  <div class="collapse navbar-collapse" id="menu"> 
@@ -57,7 +56,7 @@
         
 
         <form>
-          <i class="fa fa-magnifying-glass"></i> 
+         
           <div class="input-group">
             <div class="input-group-prepend">
               <button id ="searchIn" class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="color: #c4b7b0;">Title</button>
@@ -70,14 +69,17 @@
             <input type="text" class="form-control" aria-label="Search"  placeholder="Search titles" name="keyword">
             
           </div>
-          <a class="filter-btn" href="#" onclick="searchAll(this)">Search</a>
+          <a class="filter-btn" href="#" onclick="searchAll(this)"> 
+            <i class="fa fa-magnifying-glass"></i> 
+          </a>
         </form>
       </div> 
-        <button id="search-toggler" class="btn ml-auto mr-2 user-btn d-flex d-md-none" type="button"
-        data-toggle="dropdown" aria-expanded="false" data-placeholder="false"> 
+      
+       <!-- <button id="search-toggler" class="btn ml-auto mr-2 user-btn d-flex d-md-none" type="button"
+        data-toggle="dropdown" aria-expanded="false" data-placeholder="false" onclick="searchAll(this)""> 
           <i class="fa fa-magnifying-glass"></i>
         </button>
-     <!--<div class="user-section d-flex">
+     <div class="user-section d-flex">
         <button data-toggle="modal" data-target="#sign"class="btn btn-primary d-flex align-items-center">
           <span>Sign in</span>
         </button>
@@ -271,10 +273,11 @@
         <a href="#/contact">Contact</a> 
       </div>-->
       <div class="footer-mid">
-        <div class="logo">
-          <img src="./logo.png" alt="Purana Hall"></div>
+        <a class="logo" href="#"  style="font-size: x-large;" >
+          <img src="./images/icons8-play-flaticons-flat-32.png" alt="Purana Hall">Purana Hall
+        </a>
         <p class="description">Purana Hall is catalog of <strong>Movies on YouTube </strong>  that allows you
-          to search,filter and watch YouTube Movies. </p> 
+          to search,filter and watch YouTube Movies. Contact at <a href="mailto:puranahall@gmail.com">puranahall@gmail.com</a></p> 
           <a id="go-top" class="top-btn btn-sm px-3 btn-secondary1 btn text-muted text-uppercase mt-5" onclick="window.scroll(0,0)">To the
           Top <i class="fa-solid fa-caret-up"></i></a>
          <!-- <a target="_blank" href="https://icons8.com/icon/flem1EIsYNii/play">Play</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>-->
