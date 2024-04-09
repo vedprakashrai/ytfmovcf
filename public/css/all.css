@@ -14175,7 +14175,7 @@ footer .footer-mid {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background-image: url(../images/footer.jpg);
+    /*background-image: url(../images/footer.jpg);*/
     background-size: cover
 }
 

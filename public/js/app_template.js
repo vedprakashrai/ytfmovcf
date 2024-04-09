@@ -120,6 +120,14 @@ window.addEventListener('load', () => {
     preloader.style.display = 'none';
   });
 
+  document.getElementById("searchAll")
+  .addEventListener("keydown", function(event) {
+  if (event.key === "Enter" && document.getElementById("searchAll").value)  {
+    event.preventDefault();
+      searchAll();
+  }
+});
+
   let pageSize = 32;
   let pages = paginate(allMovies, pageSize);
   createPagination(pages.length);
@@ -258,7 +266,7 @@ var change = function (n) {
 
   function searchAll(){
 
-    var searchText =document.getElementsByName("keyword")[0].value ;
+    var searchText = document.getElementById("searchAll").value ;
     var searchIn =  document.getElementById("searchIn").innerHTML;
     if(searchText.length){
       movies = [...allMovies];

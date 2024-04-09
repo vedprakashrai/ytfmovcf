@@ -27,7 +27,6 @@
 
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.4/css/swiper.min.css"> 
  <!--<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/4.0.0/css/tooltipster.bundle.min.css">-->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"> 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 
@@ -56,7 +55,6 @@
         
 
         <form>
-         
           <div class="input-group">
             <div class="input-group-prepend">
               <button id ="searchIn" class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="color: #c4b7b0;">Title</button>
@@ -66,10 +64,10 @@
                 <a class="dropdown-item" href="#" style="color: #c4b7b0;" onclick="searchIn(this)">Director</a>
               </div>
             </div>
-            <input type="text" class="form-control" aria-label="Search"  placeholder="Search titles" name="keyword">
+            <input id = "searchAll" type="text" class="form-control" aria-label="Search"  placeholder="Search titles" name="keyword">
             
           </div>
-          <a class="filter-btn" href="#" onclick="searchAll(this)"> 
+          <a class="filter-btn"  href="#" onclick="searchAll(this)"> 
             <i class="fa fa-magnifying-glass"></i> 
           </a>
         </form>
@@ -200,14 +198,14 @@
                     <li> <input type="checkbox" id="year-1971-75" name="year" value="1971-1975"> <label
                         for="year-1971-75">1971-75</label> </li>
                     <li> <input type="checkbox" id="year-1966-70" name="year" value="1966-1970"> <label
-                        for="year-1970s">1966-70</label> </li>
+                        for="year-1966-70">1966-70</label> </li>
                     <li> <input type="checkbox" id="year-1960-65" name="year" value="1960-1965"> <label
                         for="year-1960-65">1960-65</label> </li>
                     <li> <input type="checkbox" id="year-1950-60" name="year" value="1950-1960"> <label
                         for="year-1950-60">1950-60</label> </li>
-                    <li> <input type="checkbox" id="year-1940-50" name="year" value="1940-50"> <label
+                    <li> <input type="checkbox" id="year-1940-50" name="year" value="1940-1950"> <label
                         for="year-1940-50">1940-50</label> </li>
-                    <li> <input type="checkbox" id="year-1930-40" name="year" value="1930-40"> <label
+                    <li> <input type="checkbox" id="year-1930-40" name="year" value="1930-1940"> <label
                       for="year-1930-40">1930-40</label> </li>
                   </ul>
                 </div>
@@ -276,8 +274,8 @@
         <a class="logo" href="#"  style="font-size: x-large;" >
           <img src="./images/icons8-play-flaticons-flat-32.png" alt="Purana Hall">Purana Hall
         </a>
-        <p class="description">Purana Hall is catalog of <strong>Movies on YouTube </strong>  that allows you
-          to search,filter and watch YouTube Movies. Contact at <a href="mailto:puranahall@gmail.com">puranahall@gmail.com</a></p> 
+        <p class="description">Purana Hall is catalog, of <strong>Movies on YouTube </strong>  that allows you
+          to search,filter and watch YouTube Movies. <br/>Contact at <a href="mailto:puranahall@gmail.com">puranahall@gmail.com</a></p> 
           <a id="go-top" class="top-btn btn-sm px-3 btn-secondary1 btn text-muted text-uppercase mt-5" onclick="window.scroll(0,0)">To the
           Top <i class="fa-solid fa-caret-up"></i></a>
          <!-- <a target="_blank" href="https://icons8.com/icon/flem1EIsYNii/play">Play</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>-->
