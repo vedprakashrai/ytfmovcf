@@ -4,17 +4,17 @@
     "description": "PuranaHall",
     "icons": [
         {
-            "src": "./images/favicon.png",
+            "src": "https://www.puranahall.com/images/icons8-play-flaticons-flat-32.png",
             "type": "image/png",
             "sizes": "512x512"
         },
         {
-            "src": "./images/favicon.png",
+            "src": "https://www.puranahall.com/images/icons8-play-flaticons-flat-32.png",
             "type": "image/png",
             "sizes": "192x192"
         }
     ],
-    "start_url": "/home?source=pwa",
+    "start_url": "https://www.puranahall.com?source=pwa",
     "background_color": "#222",
     "theme_color": "#222",
     "display": "standalone",
