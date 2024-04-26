@@ -193,7 +193,7 @@ function getNewDivTemplate(mov){
             renderPage(pages[pageNumber-1]);
         }
     }).on('page', function (event, page) {
-        console.info(page + ' (from event listening)');
+        //console.info(page + ' (from event listening)');
     });
    }
 
