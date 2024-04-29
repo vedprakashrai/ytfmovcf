@@ -4,12 +4,12 @@
     "description": "PuranaHall",
     "icons": [
         {
-            "src": "https://www.puranahall.com/images/icons8-play-flaticons-flat-32.png",
+            "src": "https://www.puranahall.com/images/icons8-play-flaticons-flat-512.png",
             "type": "image/png",
             "sizes": "512x512"
         },
         {
-            "src": "https://www.puranahall.com/images/icons8-play-flaticons-flat-32.png",
+            "src": "https://www.puranahall.com/images/icons8-play-flaticons-flat-192.png",
             "type": "image/png",
             "sizes": "192x192"
         }
