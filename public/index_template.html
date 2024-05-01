@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>Purana Hall YT Movie catalog</title>
+  <meta name="description" content="Filter, Search movies ">
+  <meta name="keywords" content="find movies, search movies">
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <meta name="revisit-after" content="1 days"> 
+  <link rel="canonical" href="#">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Filter, Search Movies ">
+  <meta property="og:description" content="Filter, Search movies on YouTube with our  search - filter system">
+  <meta property="og:image:width" content="650">
+  <meta property="og:image:height" content="350">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+  <link rel="manifest" href="./js/manifest.json">
+ <link rel="stylesheet" type="text/css" href="./css/tooltipster.bundle.min.css">
+  <!-- <link href="./css/css2.html" rel="stylesheet">
+  <link href="./css/all.min.css" rel="stylesheet">-->
+  <link rel="stylesheet" href="./css/all.min.css">
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.4/css/swiper.min.css"> 
+ <!--<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/4.0.0/css/tooltipster.bundle.min.css">-->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark"> 
+        <!--<button class="navbar-toggler mr-2" type="button"  data-toggle="collapse" data-target="#menu"> 
+          <i class="fa fa-bars"></i> 
+        </button>  -->
+        <a class="logo" href="#"  style="font-size: x-large;" >
+          <img src="./images/icons8-play-flaticons-flat-32.png" alt="Purana Hall">Purana Hall</a>
+       <!--  <div class="collapse navbar-collapse" id="menu"> 
+          <a href="#">Browse</a> 
+         <a href="#">Movies</a> 
+          <a href="#">TV Shows</a>
+        </div> -->
+      </nav>
+      <div id="search">
+        <!--<form  action="javascript:;" onsubmit="searchAll(this)" autocomplete="off"> 
+          <i class="fa fa-magnifying-glass"></i> 
+          <input type="text"  placeholder="Search" name="keyword"> 
+          <a class="filter-btn" href="#" onclick="searchAll(this)">Search</a>
+        </form>
+        <div class="suggestion"></div>-->
+        
+
+        <form>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <button id ="searchIn" class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="color: #c4b7b0;">Title</button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#" style="color: #c4b7b0;" onclick="searchIn(this)">Title</a>
+                <a class="dropdown-item" href="#" style="color: #c4b7b0;" onclick="searchIn(this)">Actor</a>
+                <a class="dropdown-item" href="#" style="color: #c4b7b0;" onclick="searchIn(this)">Director</a>
+              </div>
+            </div>
+            <input id = "searchAll" type="text" class="form-control" aria-label="Search"  placeholder="Search titles" name="keyword">
+            
+          </div>
+          <a class="filter-btn"  href="#" onclick="searchAll(this)"> 
+            <i class="fa fa-magnifying-glass"></i> 
+          </a>
+        </form>
+      </div> 
+      
+       <!-- <button id="search-toggler" class="btn ml-auto mr-2 user-btn d-flex d-md-none" type="button"
+        data-toggle="dropdown" aria-expanded="false" data-placeholder="false" onclick="searchAll(this)""> 
+          <i class="fa fa-magnifying-glass"></i>
+        </button>
+     <div class="user-section d-flex">
+        <button data-toggle="modal" data-target="#sign"class="btn btn-primary d-flex align-items-center">
+          <span>Sign in</span>
+        </button>
+      </div>-->
+    </header>
+    <main class="set-page">
+      <section>
+        <div class="container">
+          <div class="top-section">
+            <!--<h2>Filter</h2>-->
+          </div>
+          <div class="mid-section">
+            <form id="list-filters" class=""  action="javascript:;" onsubmit="filterAll(this)" autocomplete="off">
+              <div>
+                <div class="dropdown responsive"> 
+                    <button class="btn list-filter dropdown-toggle" data-toggle="dropdown"> 
+                        <span class="value" data-placeholder="Genre" data-label-placement="true">Genre</span>
+                     </button>
+                  <div class="noclose dropdown-menu genres lg c4">
+                    <ul class="options">
+                      <li title="Action"> <input type="checkbox" id="genre-action" name="genre" value="Action"> <label
+                          for="genre-action">Action</label> </li>
+                      <li title="Adventure"> <input type="checkbox" id="genre-adventure" name="genre" value="Adventure">
+                        <label for="genre-adventure">Adventure</label> </li>
+                      <li title="Animation"> <input type="checkbox" id="genre-animation" name="genre" value="Animation">
+                        <label for="genre-animation">Animation</label> </li>
+                      <li title="Biography"> <input type="checkbox" id="genre-biography" name="genre" value="Biography">
+                        <label for="genre-biography">Biography</label> </li>
+                      <li title="Comedy"> <input type="checkbox" id="genre-comedy" name="genre" value="Comedy"> <label
+                          for="genre-comedy">Comedy</label> </li>
+                     <!-- <li title="Costume"> <input type="checkbox" id="genre-costume" name="genre" value="1693"> <label
+                          for="genre-costume">Costume</label> </li> -->
+                      <li title="Crime"> <input type="checkbox" id="genre-crime" name="genre" value="Crime"> <label
+                          for="genre-crime">Crime</label> </li>
+                      <li title="Documentary"> <input type="checkbox" id="genre-documentary" name="genre" value="Documentary">
+                        <label for="genre-documentary">Documentary</label> </li>
+                      <li title="Drama"> <input type="checkbox" id="genre-drama" name="genre" value="Drama"> <label
+                          for="genre-drama">Drama</label> </li>
+                      <li title="Family"> <input type="checkbox" id="genre-family" name="genre" value="Family"> <label
+                          for="genre-family">Family</label> </li>
+                      <li title="Fantasy"> <input type="checkbox" id="genre-fantasy" name="genre" value="Fantasy"> <label
+                          for="genre-fantasy">Fantasy</label> </li>
+                     <!--  <li title="Film-Noir"> <input type="checkbox" id="genre-film-noir" name="genre" value="1068395">
+                        <label for="genre-film-noir">Film-Noir</label> </li>
+                      <li title="Game-Show"> <input type="checkbox" id="genre-game-show" name="genre" value="212">
+                        <label for="genre-game-show">Game-Show</label> </li> -->
+                      <li title="History"> <input type="checkbox" id="genre-history" name="genre" value="History"> <label
+                          for="genre-history">History</label> </li>
+                      <li title="Horror"> <input type="checkbox" id="genre-horror" name="genre" value="Horror"> <label
+                          for="genre-horror">Horror</label> </li>
+                      <li title="Music"> <input type="checkbox" id="genre-music" name="genre" value="Music"> <label
+                          for="genre-music">Music</label> </li>
+                      <li title="Musical"> <input type="checkbox" id="genre-musical" name="genre" value="Musical">
+                        <label for="genre-musical">Musical</label> </li>
+                      <li title="Mystery"> <input type="checkbox" id="genre-mystery" name="genre" value="Mystery"> <label
+                          for="genre-mystery">Mystery</label> </li>
+                     <!--  <li title="News"> <input type="checkbox" id="genre-news" name="genre" value="1066549"> <label
+                          for="genre-news">News</label> </li>
+                      <li title="Reality"> <input type="checkbox" id="genre-reality" name="genre" value="1123750">
+                        <label for="genre-reality">Reality</label> </li>
+                      <li title="Reality-TV"> <input type="checkbox" id="genre-reality-tv" name="genre" value="4">
+                        <label for="genre-reality-tv">Reality-TV</label> </li> -->
+                      <li title="Romance"> <input type="checkbox" id="genre-romance" name="genre" value="Romance"> <label
+                          for="genre-romance">Romance</label> </li>
+                      <li title="Sci-Fi"> <input type="checkbox" id="genre-sci-fi" name="genre" value="Sci-Fi"> <label
+                          for="genre-sci-fi">Sci-Fi</label> </li>
+                      <li title="Sport"> <input type="checkbox" id="genre-sport" name="genre" value="Sport"> <label
+                          for="genre-sport">Sport</label> </li>
+                      <!-- <li title="Talk"> <input type="checkbox" id="genre-talk" name="genre" value="1124002"> <label
+                          for="genre-talk">Talk</label> </li> -->
+                      <li title="Thriller"> <input type="checkbox" id="genre-thriller" name="genre" value="Thriller"> <label
+                          for="genre-thriller">Thriller</label> </li>
+                     <!--  <li title="TV Movie"> <input type="checkbox" id="genre-tv-movie" name="genre" value="1123752">
+                        <label for="genre-tv-movie">TV Movie</label> </li> -->
+                     <!--  <li title="TV Show"> <input type="checkbox" id="genre-tv-show" name="genre" value="139"> <label
+                          for="genre-tv-show">TV Show</label> </li> -->
+                      <li title="War"> <input type="checkbox" id="genre-war" name="genre" value="War"> <label
+                          for="genre-war">War</label> </li>
+                      <li title="Western"> <input type="checkbox" id="genre-western" name="genre" value="Western"> <label
+                          for="genre-western">Western</label> </li>
+                    </ul>
+                    <!--<ul class="allgenre">
+                      <li class="w-100"> <input type="checkbox" id="genre_mode" name="genre_mode" value="and"> <label
+                          for="genre_mode" class="combine-mode">Must have all selected genres</label> </li>-->
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="dropdown responsive"> <button class="btn list-filter dropdown-toggle"
+                    data-toggle="dropdown"> <span class="value" data-placeholder="Year"
+                      data-label-placement="true">Year</span> </button>
+                  <ul class="noclose dropdown-menu md c3">
+                    <li> 
+                      <input type="checkbox" id="year-2011" name="year" value="2020-2024"> 
+                      <label for="year-2011">2020-24</label> 
+                    </li>
+                    <li> 
+                      <input type="checkbox" id="year-2010" name="year" value="2016-2020"> 
+                      <label for="year-2010">2016-20</label> 
+                    </li>
+                    <li> <input type="checkbox" id="year-2009" name="year" value="2011-2015"> <label
+                        for="year-2009">2011-15</label> </li>
+                    <li> <input type="checkbox" id="year-2008" name="year" value="2006-2010"> <label
+                        for="year-2008">2006-10</label> </li>
+                    <li> <input type="checkbox" id="year-2001-05" name="year" value="2001-2005"> <label
+                        for="year-2001-05">2001-05</label> </li>
+                    <li> <input type="checkbox" id="year-1996-00" name="year" value="1996-2000"> <label
+                        for="year-1996-00">1996-00</label> </li>
+                    <li> <input type="checkbox" id="year-1991-95" name="year" value="1991-1995"> <label
+                        for="year-1991-95">1991-95</label> </li>
+                    <li> <input type="checkbox" id="year-1986-90" name="year" value="1986-1990"> <label
+                        for="year-1986-90">1986-90</label> </li>
+                    <li> <input type="checkbox" id="year-1981-85" name="year" value="1981-1985"> <label
+                        for="year-1981-85">1981-85</label> </li>
+                    <li> <input type="checkbox" id="year-1976-80" name="year" value="1976-1980"> <label
+                        for="year-1976-80">1976-80</label> </li>
+                    <li> <input type="checkbox" id="year-1971-75" name="year" value="1971-1975"> <label
+                        for="year-1971-75">1971-75</label> </li>
+                    <li> <input type="checkbox" id="year-1966-70" name="year" value="1966-1970"> <label
+                        for="year-1966-70">1966-70</label> </li>
+                    <li> <input type="checkbox" id="year-1960-65" name="year" value="1960-1965"> <label
+                        for="year-1960-65">1960-65</label> </li>
+                    <li> <input type="checkbox" id="year-1950-60" name="year" value="1950-1960"> <label
+                        for="year-1950-60">1950-60</label> </li>
+                    <li> <input type="checkbox" id="year-1940-50" name="year" value="1940-1950"> <label
+                        for="year-1940-50">1940-50</label> </li>
+                    <li> <input type="checkbox" id="year-1930-40" name="year" value="1930-1940"> <label
+                      for="year-1930-40">1930-40</label> </li>
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <div class="dropdown responsive"> 
+                  <button class="btn list-filter dropdown-toggle" data-toggle="dropdown"> 
+                    <span class="value" data-placeholder="Sort by" data-label-placement="true">Sort by</span> 
+                  </button>
+                  <ul class="noclose dropdown-menu c1">
+                    <!--<li> <input type="radio" id="sort-recently_updated" name="sort" value="recently_updated"
+                        checked="checked"> <label for="sort-recently_updated">Recently updated</label> </li>
+                    <li> <input type="radio" id="sort-recently_added" name="sort" value="recently_added"> <label
+                        for="sort-recently_added">Recently added</label> </li>-->
+                    <li> <input type="radio" id="sort-imdb" name="sort" value="imdb_rating"> 
+                        <label for="sort-imdb">Rating</label> 
+                    </li>
+                    <li> <input type="radio" id="sort-release_date" name="sort" value="year_of_release"> 
+                         <label for="sort-release_date">Release Year</label> 
+                    </li>
+                    <li> <input type="radio" id="sort-title_az" name="sort" value="original_title"> 
+                         <label for="sort-title_az">Name A-Z</label> 
+                    </li>
+                    
+                <!--<li> <input type="radio" id="sort-most_watched" name="sort" value="most_watched"> 
+                         <label  for="sort-most_watched">Most watched</label> 
+                    </li>-->
+                  </ul>
+                </div>
+              </div>
+              <div> 
+                <button
+                  class="w-100 btn text-uppercase btn-all-filter rounded-pill btn-primary d-flex justify-content-between align-items-center">
+                  <span>Filter</span>
+                </button>
+              </div>
+            </form>
+            <div class="clearfix"></div>
+            <div class="origin content-card " id="cards">
+             <!-- $cards$ -->
+            </div>
+            <div class="mt-5">
+              <nav class="navigation">
+                <ul class="pagination" id="pagination">
+                 <!-- <li class="page-item active" aria-current="page"><span class="page-link">1</span></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">4</a></li>
+                  <li class="page-item"><a class="page-link" href="#">5</a></li>
+                  <li class="page-item"> <a class="page-link" href="#" rel="next"
+                      aria-label="Next »"><i class="fa-solid fa-angle-right"></i></a> </li>
+                  <li class="page-item"> <a class="page-link" href="#1491"
+                      rel="last"><i class="fa-solid fa-angles-right"></i></a> </li> -->
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <!--<div class="footer-top-menu"> 
+        <a href="#/contact">Contact</a> 
+      </div>-->
+      <div class="footer-mid">
+        <a class="logo" href="#"  style="font-size: x-large;" >
+          <img src="./images/icons8-play-flaticons-flat-32.png" alt="Purana Hall">Purana Hall
+        </a>
+        <p class="description">Purana Hall is catalog of <strong>movies on YouTube </strong> that allows you
+          to search,filter and watch official upload of YouTube Movies. <br/>Contact at <a href="mailto:puranahall@gmail.com">puranahall@gmail.com</a></p> 
+          <a id="go-top" class="top-btn btn-sm px-3 btn-secondary1 btn text-muted text-uppercase mt-5" onclick="window.scroll(0,0)">To the
+          Top <i class="fa-solid fa-caret-up"></i></a>
+         <!-- <a target="_blank" href="https://icons8.com/icon/flem1EIsYNii/play">Play</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>-->
+      </div>
+    </footer>
+  </div>
+
+
+<div class="modal videomodal fade" id="ytModal" tabindex="-1" role="dialog" aria-labelledby="ytModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-fullscreen" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div> 
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" frameborder="0" allowfullscreen="true"></iframe>
+            </div>
+      </div>
+   </div>
+  </div>
+</div>
+  <script type="text/javascript"  src="/js/lazysizes.min.js"></script>
+  <script type="text/javascript"  src="./js/jquery.min.js"></script>
+  <script type="text/javascript"  src="./js/browser-polyfill.min.js"></script>
+  <script type="text/javascript"  src="./js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript"  src="./js/tooltipster.bundle.min.js"></script>
+  <script type="text/javascript"  src="./js/swiper.min.js"></script>
+  <script type="text/javascript"  src="./js/jquery.twbsPagination.min.js"></script>
+  <script type="text/javascript"  src="./js/app.min.js"></script>
+</body>
+
+</html>

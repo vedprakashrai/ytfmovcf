@@ -128,11 +128,7 @@ window.addEventListener('load', () => {
   }
 });
 
-  let pageSize = 32;
-  let pages = paginate(allMovies, pageSize);
-  createPagination(pages.length);
- // document.querySelectorAll('.tooltipstered').forEach(e=>tooltip($(e)));
-  //renderPage(pages[0]);
+
 
 //movies.forEach(d=>document.getElementById("cards").insertAdjacentHTML('beforeend',getNewDiv(d)));
 function renderPage(page){
@@ -181,6 +177,7 @@ function getNewDivTemplate(mov){
    function createPagination(totPages){
     totPages = totPages||1;
     window.pagObj = $('#pagination').twbsPagination({
+    	//initiateStartPageClick: false,
         totalPages: totPages,
         visiblePages: 5,
         first:"<i class=\"fa-solid fa-angles-left\"></i>",
@@ -190,7 +187,10 @@ function getNewDivTemplate(mov){
         onPageClick: function (event, pageNumber) {
           //  console.info(page + ' (from options)');
           //  document.getElementById("cards").children().remove();
-            renderPage(pages[pageNumber-1]);
+            if(!firstPageLoad){
+            	renderPage(pages[pageNumber-1]);
+            }
+            firstPageLoad = false;
         }
     }).on('page', function (event, page) {
         //console.info(page + ' (from event listening)');
@@ -318,3 +318,15 @@ var change = function (n) {
     }
 
    window.openYT = openYT;
+   //main code
+function init(){
+  createPagination(pages.length);
+  document.querySelectorAll('.tooltipstered').forEach(e=>tooltip($(e)));
+
+}
+let pageSize = 32;
+let pages = paginate(allMovies, pageSize);
+var firstPageLoad = true;
+init();
+ // document.querySelectorAll('.tooltipstered').forEach(e=>tooltip($(e)));
+  //renderPage(pages[0]);
