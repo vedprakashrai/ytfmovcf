@@ -114,11 +114,11 @@ moviedb.forEach(mo=>{
 allMovies =sort([...movies],"imdb_rating");
 
 
-window.addEventListener('load', () => {
+/*window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     if(!!preloader)
     preloader.style.display = 'none';
-  });
+  });*/
 
   document.getElementById("searchAll")
   .addEventListener("keydown", function(event) {
@@ -297,16 +297,16 @@ var change = function (n) {
     
   }
 
-    function sort(movs,sortBy){
+   function sort(movs,sortBy){
       if(!!sortBy){
 
         if(sortBy=="original_title"){
           movs.sort((a,b)=>a[sortBy].localeCompare(b[sortBy]));
-        }else{
-         movs.sort((a,b)=>a[sortBy]-b[sortBy]);
+        }else{ //sub sort by year
+         movs.sort((a,b)=>(a[sortBy]-b[sortBy]) || (a["year_of_release"]-b["year_of_release"]));
         }
-         if(sortBy==="imdb_rating") //decending for rating
-          movs.reverse();
+        if(sortBy==="imdb_rating") //decending for rating //sub sort by year
+        movs.sort((a,b)=>(b[sortBy]-a[sortBy]) || !(b["year_of_release"]-a["year_of_release"]));
       }
       return movs;
     }
