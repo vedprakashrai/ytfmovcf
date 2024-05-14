@@ -92,7 +92,7 @@ moviedb.forEach(mo=>{
   mo[4] = mo[4].split("|").map(m=>!isNaN(m)?actorsFreq[m]:m);
   mo[5] = mo[5].split("|").map(m=>!isNaN(m)?dirFreq[m]:m);
   mo[2] = mo[2].split("|").map(m=>genres[m]);
-  mo[1] = mo[1]>30?1900+mo[1]:2000+mo[1];
+  mo[1] = mo[1]>=24?1900+mo[1]:2000+mo[1];
   if(mo.length==7)
     {
       mo.push('');
@@ -297,19 +297,19 @@ var change = function (n) {
     
   }
 
-   function sort(movs,sortBy){
-      if(!!sortBy){
+     function sort(movs,sortBy){
+    sortBy = sortBy || "year_of_release"; //default sort by year asc
 
-        if(sortBy=="original_title"){
-          movs.sort((a,b)=>a[sortBy].localeCompare(b[sortBy]));
-        }else{ //sub sort by year
-         movs.sort((a,b)=>(a[sortBy]-b[sortBy]) || (a["year_of_release"]-b["year_of_release"]));
-        }
-        if(sortBy==="imdb_rating") //decending for rating //sub sort by year
-        movs.sort((a,b)=>(b[sortBy]-a[sortBy]) || !(b["year_of_release"]-a["year_of_release"]));
-      }
+    if(sortBy=="original_title"){
+      movs.sort((a,b)=>a[sortBy].localeCompare(b[sortBy]));
+    }else{
+      movs.sort((a,b)=>(a[sortBy]-b[sortBy]) || (a["year_of_release"]-b["year_of_release"]));
+    }
+    if(sortBy==="imdb_rating") //decending for rating
+      movs.sort((a,b)=>(b[sortBy]-a[sortBy]) || !(b["year_of_release"]-a["year_of_release"]));
       return movs;
     }
+    
     var searchInField = "Title";
     function searchIn(item) {
       document.getElementById("searchIn").innerHTML = item.innerHTML;
@@ -328,5 +328,14 @@ let pageSize = 32;
 let pages = paginate(allMovies, pageSize);
 var firstPageLoad = true;
 init();
+$(document)//.off(".bs.dropdown.data-api")
+        //.on("click.bs.dropdown.data-api", C)
+        //.on("click.bs.dropdown.data-api", "[data-toggle=\"dropdown\"]", e.toggle)
+        .on("click.bs.dropdown.data-api", ".dropdown-menu li > input[type=\"checkbox\"] ~ label, .dropdown-menu li > input[type=\"checkbox\"], .dropdown-menu.noclose li, .dropdown-menu.noclose", function (n) {
+  n.stopPropagation();
+})
+.on("change.bs.dropdown.data-api", ".dropdown-menu li > input[type=\"checkbox\"], .dropdown-menu li > input[type=\"radio\"]", e.change)
+.on("keydown.bs.dropdown.data-api", "[data-toggle=\"dropdown\"], [role=\"menu\"], [role=\"listbox\"]", e.keydown);
+  
  // document.querySelectorAll('.tooltipstered').forEach(e=>tooltip($(e)));
   //renderPage(pages[0]);
