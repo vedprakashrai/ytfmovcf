@@ -334,8 +334,5 @@ $(document)//.off(".bs.dropdown.data-api")
         .on("click.bs.dropdown.data-api", ".dropdown-menu li > input[type=\"checkbox\"] ~ label, .dropdown-menu li > input[type=\"checkbox\"], .dropdown-menu.noclose li, .dropdown-menu.noclose", function (n) {
   n.stopPropagation();
 })
-.on("change.bs.dropdown.data-api", ".dropdown-menu li > input[type=\"checkbox\"], .dropdown-menu li > input[type=\"radio\"]", e.change)
-.on("keydown.bs.dropdown.data-api", "[data-toggle=\"dropdown\"], [role=\"menu\"], [role=\"listbox\"]", e.keydown);
-  
  // document.querySelectorAll('.tooltipstered').forEach(e=>tooltip($(e)));
   //renderPage(pages[0]);
