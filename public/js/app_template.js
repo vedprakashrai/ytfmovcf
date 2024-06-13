@@ -122,9 +122,10 @@ allMovies =sort([...movies],"imdb_rating");
 
   document.getElementById("searchAll")
   .addEventListener("keydown", function(event) {
-  if (event.key === "Enter" && document.getElementById("searchAll").value)  {
+ //change to include filter selection also
+  if (event.key === "Enter" && document.getElementById("searchAll").value )  {
     event.preventDefault();
-      searchAll();
+    filterAll();
   }
 });
 
@@ -239,7 +240,14 @@ var change = function (n) {
 
   function filterAll(){
     movies = [...allMovies];
-    var selectedGenre =[...document.querySelectorAll('input[name=genre]:checked')].map(f=>f.value);
+
+    var searchText =document.getElementById("searchAll").value ;
+    var searchIn =  document.getElementById("searchIn").innerHTML;
+
+    if(searchText){
+      movies = searchAll(searchText,searchIn,movies);
+    }
+        var selectedGenre =[...document.querySelectorAll('input[name=genre]:checked')].map(f=>f.value);
     if(selectedGenre.length){
       movies = movies.filter(movie=>selectedGenre.some(gen=>movie.genres.includes(gen)));
      
@@ -264,12 +272,10 @@ var change = function (n) {
     //document.querySelectorAll('.tooltipstered').forEach(e=>tooltip($(e)));
   }
 
-  function searchAll(){
+function searchAll(searchText,searchIn,movies){
 
-    var searchText = document.getElementById("searchAll").value ;
-    var searchIn =  document.getElementById("searchIn").innerHTML;
+   
     if(searchText.length){
-      movies = [...allMovies];
       switch (searchIn){
         case "Title":
           movies = movies.filter(movie=>~movie.original_title.toUpperCase().indexOf(searchText.toUpperCase()));
@@ -289,12 +295,14 @@ var change = function (n) {
     }else if(movies.length!=allMovies.length){
       movies = [...allMovies];
     }
-      pages = paginate(movies, pageSize);
+       return movies;
+    
+    /*pages = paginate(movies, pageSize);
     //renderPage(pages[0]);
     $('#pagination').twbsPagination('destroy');
     createPagination(pages.length);
     //document.querySelectorAll('.tooltipstered').forEach(e=>tooltip($(e)));
-    
+    */
   }
 
      function sort(movs,sortBy){
@@ -336,3 +344,4 @@ $(document)//.off(".bs.dropdown.data-api")
 })
  // document.querySelectorAll('.tooltipstered').forEach(e=>tooltip($(e)));
   //renderPage(pages[0]);
+
