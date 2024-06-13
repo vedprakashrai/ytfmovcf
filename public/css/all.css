@@ -584,6 +584,8 @@ pre code {
     margin-left: auto
 }
 
+
+
 @media (min-width:576px) {
 
     .container,
@@ -8307,6 +8309,9 @@ button.bg-dark:hover {
     .d-sm-inline-flex {
         display: inline-flex !important
     }
+    .justify-content-md-center {
+        justify-content: center !important
+    }
 }
 
 @media (min-width:768px) {
@@ -8383,6 +8388,7 @@ button.bg-dark:hover {
     .d-lg-inline-flex {
         display: inline-flex !important
     }
+    
 }
 
 @media (min-width:1200px) {
@@ -8421,6 +8427,9 @@ button.bg-dark:hover {
     .d-xl-inline-flex {
         display: inline-flex !important
     }
+    .justify-content-md-center {
+        justify-content: center !important
+    }
 }
 
 @media (min-width:1400px) {
@@ -8458,6 +8467,9 @@ button.bg-dark:hover {
 
     .d-xxl-inline-flex {
         display: inline-flex !important
+    }
+    .justify-content-md-center {
+        justify-content: center !important
     }
 }
 
@@ -8813,6 +8825,9 @@ button.bg-dark:hover {
     .align-self-sm-stretch {
         align-self: stretch !important
     }
+    .justify-content-lg-center {
+        justify-content: center !important
+    }
 }
 
 @media (min-width:768px) {
@@ -8950,6 +8965,9 @@ button.bg-dark:hover {
 
     .align-self-md-stretch {
         align-self: stretch !important
+    }
+    .justify-content-lg-center {
+        justify-content: center !important
     }
 }
 
@@ -14170,12 +14188,12 @@ footer .footer-top-menu a:hover {
 }
 
 footer .footer-mid {
-    padding: 0rem 1rem;
+    padding: 5rem 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    /*background-image: url(../images/footer.jpg);*/
+   /* background-image: url(../images/footer.jpg);*/
     background-size: cover
 }
 
@@ -14896,7 +14914,7 @@ footer .footer-mid .top-btn {
 }
 
 #list-filters>div {
-    width: 25%;
+    width: 20%;
     padding: 0 .15rem;
     float: left;
     margin-bottom: 5px
@@ -15581,7 +15599,7 @@ main.intro .index-article p {
         font-size: 13px
     }
 
-   /* #search {
+    #search {
         display: none;
         position: absolute;
         max-width: unset;
@@ -15599,14 +15617,6 @@ main.intro .index-article p {
     #search.active {
         display: block;
         opacity: 1
-    }*/
-    header {
-        height: 6rem;
-        display: inline-block;
-       
-    }
-    #search {
-        max-width: unset;
     }
 
     #ctrl-player {
@@ -15739,6 +15749,9 @@ main.intro .index-article p {
 
     #list-filters>div {
         width: 50%
+    }
+    #list-filters>div:first-child {
+        width: 100%
     }
 
     #list-filters>div:last-child {
