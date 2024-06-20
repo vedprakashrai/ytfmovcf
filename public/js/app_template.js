@@ -264,7 +264,9 @@ var change = function (n) {
     }else{
     //  movies = [...allMovies];
     }
-    movies =  sort(movies,document.querySelector('input[name=sort]:checked')?.value);
+    if(searchText ||  selectedGenre.length || selectedYear.length){
+    	movies =  sort(movies,document.querySelector('input[name=sort]:checked')?.value);
+    }
     pages = paginate(movies, pageSize);
     //renderPage(pages[0]);
     $('#pagination').twbsPagination('destroy');
