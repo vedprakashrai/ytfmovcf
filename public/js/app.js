@@ -318,15 +318,30 @@ var change = function (n) {
   function sort(movs,sortBy){
     sortBy = sortBy || "year_of_release"; //default sort by year asc
 
-    if(sortBy=="original_title"){
+    switch(sortBy){
+      case "original_title" : movs.sort((a,b)=>a[sortBy].localeCompare(b[sortBy])); 
+                              break;
+      case "imdb_rating" : movs.sort((a,b)=>b[sortBy]===a[sortBy] ? b["year_of_release"]<a["year_of_release"]? 1 :-1 : b[sortBy]>a[sortBy]? 1 :-1);
+                           break;
+      default : movs.sort((a,b)=>((a[sortBy]>b[sortBy]) || (a["year_of_release"]>b["year_of_release"])) ? 1 :((a[sortBy]<b[sortBy]) || (a["year_of_release"]>b["year_of_release"])) ? -1 : 0);
+    }
+
+   /* if(sortBy=="original_title"){
       movs.sort((a,b)=>a[sortBy].localeCompare(b[sortBy]));
     }else{
       movs.sort((a,b)=>((a[sortBy]>b[sortBy]) || (a["year_of_release"]>b["year_of_release"])) ? 1 :((a[sortBy]<b[sortBy]) || (a["year_of_release"]>b["year_of_release"])) ? -1 : 0);
     }
     if(sortBy==="imdb_rating") //decending for rating
-      movs.sort((a,b)=>((b[sortBy]>a[sortBy]) || (b["year_of_release"]<a["year_of_release"])) ? 1 : ((b[sortBy]<a[sortBy]) || (b["year_of_release"]>a["year_of_release"])) ? -1 :0);
-      return movs;
-    }       
+    movs.sort((a,b)=>{if(b[sortBy]===a[sortBy]){
+        return b["year_of_release"]<a["year_of_release"]? 1 :-1
+         }else{
+          return b[sortBy]>a[sortBy]? 1 :-1
+         }})
+
+    //  movs.sort((a,b)=>((b[sortBy]>a[sortBy]) || (b["year_of_release"]>a["year_of_release"])) ? 1 : ((b[sortBy]<a[sortBy]) || (b["year_of_release"]<a["year_of_release"])) ? -1 :0);
+    */  
+    return movs;
+    }  
 
     var searchInField = "Title";
     function searchIn(item) {
