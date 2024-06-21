@@ -76,6 +76,7 @@ var tooltip=function (ele) {
 }
 
 
+//application run 
 let movies = [];
 let allMovies = [];
 let pageSize = 32;
@@ -83,16 +84,16 @@ let pages = [];
 var firstPageLoad = true;
 
 //$.get("m.json", function(ph, status){
-  var moviedb = ph.moviedb;
-  var actorsFreq = ph.actorsFreq;
-  var dirFreq = ph.dirFreq;
-  var genres = ph.genres;
+var moviedb = ph.moviedb;
+var actorsFreq = ph.actorsFreq;
+var dirFreq = ph.dirFreq;
+var genres = ph.genres;
 moviedb.forEach(mo=>{
 
   mo[4] = mo[4].split("|").map(m=>!isNaN(m)?actorsFreq[m]:m);
   mo[5] = mo[5].split("|").map(m=>!isNaN(m)?dirFreq[m]:m);
   mo[2] = mo[2].split("|").map(m=>genres[m]);
-  mo[1] = mo[1]>=24?1900+mo[1]:2000+mo[1];
+  mo[1] = mo[1]>24?1900+mo[1]:2000+mo[1];
   if(mo.length==7)
     {
       mo.push('');
@@ -134,7 +135,7 @@ init();
 });
 
 
-
+  
 //movies.forEach(d=>document.getElementById("cards").insertAdjacentHTML('beforeend',getNewDiv(d)));
 function renderPage(page){
  // console.log(document.getElementById("cards"));
@@ -170,19 +171,19 @@ function getNewDivTemplate(mov){
   return div;
    }
 
-   function openYT(yt,tplus,title){
+function openYT(yt,tplus,title){
      window.open("https://www.youtube.com/watch?v="+yt+(tplus!=undefined?"&t="+tplus:""), '_blank').focus();
     
-    /*document.getElementById('video').src = "https://www.youtube.com/embed/"+yt+"?"+(!!tplus || tplus!=undefined?"&t="+tplus:"")+"&autoplay=1&mute=1";
+    //*document.getElementById('video').src = "https://www.youtube.com/embed/"+yt+"?"+(!!tplus || tplus!=undefined?"&t="+tplus:"")+"&autoplay=1&mute=1";
    // document.getElementById('modalHeader').innerHTML = title;
-    document.getElementById('ytModal').modal({keyboard: true});*/
+    //document.getElementById('ytModal').modal({keyboard: true});
    }
 
 
    function createPagination(totPages){
     totPages = totPages||1;
     window.pagObj = $('#pagination').twbsPagination({
-    	//initiateStartPageClick: false,
+       //initiateStartPageClick: false,
         totalPages: totPages,
         visiblePages: 5,
         first:"<i class=\"fa-solid fa-angles-left\"></i>",
@@ -192,10 +193,10 @@ function getNewDivTemplate(mov){
         onPageClick: function (event, pageNumber) {
           //  console.info(page + ' (from options)');
           //  document.getElementById("cards").children().remove();
-            if(!firstPageLoad){
-            	renderPage(pages[pageNumber-1]);
-            }
-            firstPageLoad = false;
+          if(!firstPageLoad){
+            renderPage(pages[pageNumber-1]);
+          }
+          firstPageLoad = false;
         }
     }).on('page', function (event, page) {
         //console.info(page + ' (from event listening)');
@@ -250,8 +251,8 @@ var change = function (n) {
 
     if(searchText){
       movies = searchAll(searchText,searchIn,movies);
-    }
-        var selectedGenre =[...document.querySelectorAll('input[name=genre]:checked')].map(f=>f.value);
+    }    
+    var selectedGenre =[...document.querySelectorAll('input[name=genre]:checked')].map(f=>f.value);
     if(selectedGenre.length){
       movies = movies.filter(movie=>selectedGenre.some(gen=>movie.genres.includes(gen)));
      
@@ -268,8 +269,11 @@ var change = function (n) {
     }else{
     //  movies = [...allMovies];
     }
-    if(searchText ||  selectedGenre.length || selectedYear.length){
-    	movies =  sort(movies,document.querySelector('input[name=sort]:checked')?.value);
+
+    var sortBy  =document.querySelector('input[name=sort]:checked')?.value;
+
+    if(searchText ||  selectedGenre.length || selectedYear.length || sortBy){
+    	movies =  sort(movies,sortBy);
     }
     pages = paginate(movies, pageSize);
     //renderPage(pages[0]);
@@ -278,7 +282,7 @@ var change = function (n) {
     //document.querySelectorAll('.tooltipstered').forEach(e=>tooltip($(e)));
   }
 
-function searchAll(searchText,searchIn,movies){
+  function searchAll(searchText,searchIn,movies){
 
    
     if(searchText.length){
@@ -301,7 +305,7 @@ function searchAll(searchText,searchIn,movies){
     }else if(movies.length!=allMovies.length){
       movies = [...allMovies];
     }
-       return movies;
+    return movies;
     
     /*pages = paginate(movies, pageSize);
     //renderPage(pages[0]);
@@ -311,19 +315,19 @@ function searchAll(searchText,searchIn,movies){
     */
   }
 
-     function sort(movs,sortBy){
+  function sort(movs,sortBy){
     sortBy = sortBy || "year_of_release"; //default sort by year asc
 
     if(sortBy=="original_title"){
       movs.sort((a,b)=>a[sortBy].localeCompare(b[sortBy]));
     }else{
-      movs.sort((a,b)=>(a[sortBy]-b[sortBy]) || (a["year_of_release"]-b["year_of_release"]));
+      movs.sort((a,b)=>((a[sortBy]>b[sortBy]) || (a["year_of_release"]>b["year_of_release"])) ? 1 :((a[sortBy]<b[sortBy]) || (a["year_of_release"]>b["year_of_release"])) ? -1 : 0);
     }
     if(sortBy==="imdb_rating") //decending for rating
-      movs.sort((a,b)=>(b[sortBy]-a[sortBy]) || !(b["year_of_release"]-a["year_of_release"]));
+      movs.sort((a,b)=>((b[sortBy]>a[sortBy]) || (b["year_of_release"]<a["year_of_release"])) ? 1 : ((b[sortBy]<a[sortBy]) || (b["year_of_release"]>a["year_of_release"])) ? -1 :0);
       return movs;
-    }
-    
+    }       
+
     var searchInField = "Title";
     function searchIn(item) {
       document.getElementById("searchIn").innerHTML = item.innerHTML;
@@ -331,8 +335,8 @@ function searchAll(searchText,searchIn,movies){
       document.getElementsByName("keyword")[0].placeholder = "Search "+item.innerHTML.toLowerCase()+"s";
     }
 
-   window.openYT = openYT;
-   //main code
+  window.openYT = openYT;
+//main code
 function init(){
   createPagination(pages.length);
   document.querySelectorAll('.tooltipstered').forEach(e=>tooltip($(e)));
@@ -348,4 +352,3 @@ $(document)//.off(".bs.dropdown.data-api")
 })
  // document.querySelectorAll('.tooltipstered').forEach(e=>tooltip($(e)));
   //renderPage(pages[0]);
-
