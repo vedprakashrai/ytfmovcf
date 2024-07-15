@@ -89,10 +89,14 @@
           </div>
           <div class="mid-section">
             <form id="list-filters" class=""  action="javascript:;" onsubmit="filterAll(this)" autocomplete="off">
-                <div class="d-flex search align-items-center"> 
-                <div class="input-group-prepend">
-                  <button id ="searchIn" class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="color: #c4b7b0;">Title</button>
-                  <div class="dropdown-menu">
+              <div class="d-flex align-items-center"> 
+                <div class="input-group-prepend dropdown">
+                  <!--<button id ="searchIn" class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" style="color: #c4b7b0;">Title</button>
+                  -->
+                  <button id ="searchIn" class="btn list-filter dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                    Title
+                 </button>
+                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="#" style="color: #c4b7b0;" onclick="searchIn(this)">Title</a>
                     <a class="dropdown-item" href="#" style="color: #c4b7b0;" onclick="searchIn(this)">Actor</a>
                     <a class="dropdown-item" href="#" style="color: #c4b7b0;" onclick="searchIn(this)">Director</a>
