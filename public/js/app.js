@@ -85,10 +85,10 @@ let pages = [];
 var firstPageLoad = true;
 
 //$.get("m.json", function(ph, status){
-var moviedb = ph.moviedb;
-var actorsFreq = ph.actorsFreq;
-var dirFreq = ph.dirFreq;
-var genres = ph.genres;
+let moviedb = ph.moviedb;
+let actorsFreq = ph.actorsFreq;
+let dirFreq = ph.dirFreq;
+let genres = ph.genres;
 moviedb.forEach(mo=>{
 
   mo[4] = mo[4].split("|").map(m=>!isNaN(m)?actorsFreq[m]:m);
@@ -247,19 +247,19 @@ var change = function (n) {
   function filterAll(){
     movies = [...allMovies];
 
-    var searchText =document.getElementById("searchAll").value ;
-    var searchIn =  document.getElementById("searchIn").innerHTML;
+    let searchText =document.getElementById("searchAll").value ;
+    let searchIn =  document.getElementById("searchIn").innerHTML.trim();
 
     if(searchText){
       movies = searchAll(searchText,searchIn,movies);
     }    
-    var selectedGenre =[...document.querySelectorAll('input[name=genre]:checked')].map(f=>f.value);
+    let selectedGenre =[...document.querySelectorAll('input[name=genre]:checked')].map(f=>f.value);
     if(selectedGenre.length){
       movies = movies.filter(movie=>selectedGenre.some(gen=>movie.genres.includes(gen)));
      
     }
 
-    var selectedYear =[...document.querySelectorAll('input[name=year]:checked')].map(f=>f.value);
+    let selectedYear =[...document.querySelectorAll('input[name=year]:checked')].map(f=>f.value);
     if(selectedYear.length){
       movies = movies.filter(movie=> selectedYear.some( years =>{
         let startYear,endYear;
@@ -271,7 +271,7 @@ var change = function (n) {
     //  movies = [...allMovies];
     }
 
-    var sortBy  =document.querySelector('input[name=sort]:checked')?.value;
+    let sortBy  =document.querySelector('input[name=sort]:checked')?.value;
 
     if(searchText ||  selectedGenre.length || selectedYear.length || sortBy){
     	movies =  sort(movies,sortBy);
