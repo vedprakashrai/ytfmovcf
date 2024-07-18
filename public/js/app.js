@@ -23,7 +23,7 @@ function expandPP(spath,title,year){
   .replace("*",".jpg") .replaceAll("<","movie")
   .replaceAll(">","Movie").replace("^",".JPG")
   .replace("?",".jpeg").replace("(","%28")
-  .replace(")",".%29").replaceAll("~",year);
+  .replace(")","%29").replaceAll("~",year);
 
   return "https://upload.wikimedia.org/wikipedia/"+fpath +"/220px-"+fpath.split("/").slice(-1);
 }
