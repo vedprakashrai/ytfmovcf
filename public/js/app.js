@@ -251,6 +251,7 @@ var change = function (n) {
     let searchIn =  document.getElementById("searchIn").innerHTML.trim();
 
     if(searchText){
+      searchText = searchText.trim();
       movies = searchAll(searchText,searchIn,movies);
     }    
     let selectedGenre =[...document.querySelectorAll('input[name=genre]:checked')].map(f=>f.value);
