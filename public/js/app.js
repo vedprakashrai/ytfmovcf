@@ -22,8 +22,8 @@ function expandPP(spath,title,year){
   .replaceAll("+","film").replaceAll(",","Film")
   .replace("*",".jpg") .replaceAll("<","movie")
   .replaceAll(">","Movie").replace("^",".JPG")
-  .replace("?",".jpeg").replace("(","%28")
-  .replace(")","%29").replaceAll("~",year);
+  .replace("?",".jpeg").replaceAll("~",year)
+  .replace("(","%28").replace(")","%29");
 
   return "https://upload.wikimedia.org/wikipedia/"+fpath +"/220px-"+fpath.split("/").slice(-1);
 }
@@ -50,8 +50,8 @@ var tooltip=function (ele) {
          /* $.ajax("ajax/film/tooltip/".concat(u.data("tip")), o).done(function (t) {
             return n.content(t);
           }); */
-          $.ajax("tooltips/".concat(ele.data("tip"))/*.concat(".html") cloudflare*/, {dataType: "html" }).done(function (t) {
-            return n.content(t);
+          $.ajax("tooltips/".concat(ele.data("tip")).concat(".html"), {dataType: "html" }).done(function (ttHtml) {
+            return n.content(ttHtml);
           });
         }
       },
@@ -77,7 +77,6 @@ var tooltip=function (ele) {
 }
 
 
-//application run 
 let movies = [];
 let allMovies = [];
 let pageSize = 32;
@@ -85,14 +84,14 @@ let pages = [];
 var firstPageLoad = true;
 
 //$.get("m.json", function(ph, status){
-let moviedb = ph.moviedb;
-let actorsFreq = ph.actorsFreq;
-let dirFreq = ph.dirFreq;
-let genres = ph.genres;
+var moviedb = ph.moviedb;
+var actorsFreq = ph.actorsFreq;
+var dirFreq = ph.dirFreq;
+var genres = ph.genres;
 moviedb.forEach(mo=>{
 
-  mo[4] = mo[4].split("|").map(m=>!isNaN(m)?actorsFreq[m]:m);
-  mo[5] = mo[5].split("|").map(m=>!isNaN(m)?dirFreq[m]:m);
+  mo[4] = mo[4].split("|").map(m=>expandName(!isNaN(m)?actorsFreq[m]:m));
+  mo[5] = mo[5].split("|").map(m=>expandName(!isNaN(m)?dirFreq[m]:m));
   mo[2] = mo[2].split("|").map(m=>genres[m]);
   mo[1] = mo[1]>24?1900+mo[1]:2000+mo[1];
   if(mo.length==7)
@@ -114,6 +113,7 @@ moviedb.forEach(mo=>{
 });
 
 allMovies =sort([...movies],"imdb_rating");
+
 
 pages = paginate(allMovies, pageSize);
 
@@ -247,20 +247,21 @@ var change = function (n) {
   function filterAll(){
     movies = [...allMovies];
 
-    let searchText =document.getElementById("searchAll").value ;
-    let searchIn =  document.getElementById("searchIn").innerHTML.trim();
+    var searchText =document.getElementById("searchAll").value ;
+    var searchIn =  document.getElementById("searchIn").innerHTML.trim();
 
     if(searchText){
       searchText = searchText.trim();
       movies = searchAll(searchText,searchIn,movies);
-    }    
-    let selectedGenre =[...document.querySelectorAll('input[name=genre]:checked')].map(f=>f.value);
+    }
+    
+    var selectedGenre =[...document.querySelectorAll('input[name=genre]:checked')].map(f=>f.value);
     if(selectedGenre.length){
       movies = movies.filter(movie=>selectedGenre.some(gen=>movie.genres.includes(gen)));
      
     }
 
-    let selectedYear =[...document.querySelectorAll('input[name=year]:checked')].map(f=>f.value);
+    var selectedYear =[...document.querySelectorAll('input[name=year]:checked')].map(f=>f.value);
     if(selectedYear.length){
       movies = movies.filter(movie=> selectedYear.some( years =>{
         let startYear,endYear;
@@ -272,7 +273,7 @@ var change = function (n) {
     //  movies = [...allMovies];
     }
 
-    let sortBy  =document.querySelector('input[name=sort]:checked')?.value;
+    var sortBy  =document.querySelector('input[name=sort]:checked')?.value;
 
     if(searchText ||  selectedGenre.length || selectedYear.length || sortBy){
     	movies =  sort(movies,sortBy);
@@ -307,6 +308,7 @@ var change = function (n) {
     }else if(movies.length!=allMovies.length){
       movies = [...allMovies];
     }
+
     return movies;
     
     /*pages = paginate(movies, pageSize);
@@ -343,7 +345,7 @@ var change = function (n) {
     //  movs.sort((a,b)=>((b[sortBy]>a[sortBy]) || (b["year_of_release"]>a["year_of_release"])) ? 1 : ((b[sortBy]<a[sortBy]) || (b["year_of_release"]<a["year_of_release"])) ? -1 :0);
     */  
     return movs;
-    }  
+    }       
 
     var searchInField = "Title";
     function searchIn(item) {
@@ -352,6 +354,12 @@ var change = function (n) {
       document.getElementsByName("keyword")[0].placeholder = "Search "+item.innerHTML.toLowerCase()+"s";
     }
 
+
+function expandName(name){
+   return str.replace(/([^.\s])([A-Z])/g, function(match, prev, cap) {
+        return prev + ' ' + cap;
+    });
+}
   window.openYT = openYT;
 //main code
 function init(){
