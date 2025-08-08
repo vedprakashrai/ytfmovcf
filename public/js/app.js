@@ -356,7 +356,9 @@ var change = function (n) {
 
 
 function expandName(name){
-   return str.replace(/([^.\s])([A-Z])/g, function(match, prev, cap) {
+  if(!name)
+    return "";
+   return name.replace(/([^.\s])([A-Z])/g, function(match, prev, cap) {
         return prev + ' ' + cap;
     });
 }
