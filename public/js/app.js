@@ -358,9 +358,9 @@ var change = function (n) {
 function expandName(name){
   if(!name)
     return "";
-   return name.replace(/([^.\s])([A-Z])/g, function(match, prev, cap) {
-        return prev + ' ' + cap;
-    });
+   let res= name.replace(/([^.\-\s])([A-Z])/g, (match, prev, cap) =>prev + ' ' + cap);
+   res = res.replace(/([^.\-\s])(\d+)/g, (m, prev, num) => prev + ' ' + num);
+   return res;
 }
   window.openYT = openYT;
 //main code
