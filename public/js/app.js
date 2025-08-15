@@ -89,7 +89,7 @@ var actorsFreq = ph.actorsFreq;
 var dirFreq = ph.dirFreq;
 var genres = ph.genres;
 moviedb.forEach(mo=>{
-
+  mo[0] = expandName(mo[0]);
   mo[4] = mo[4].split("|").map(m=>expandName(!isNaN(m)?actorsFreq[m]:m));
   mo[5] = mo[5].split("|").map(m=>expandName(!isNaN(m)?dirFreq[m]:m));
   mo[2] = mo[2].split("|").map(m=>genres[m]);
