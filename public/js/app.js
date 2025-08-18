@@ -359,7 +359,7 @@ function expandName(name){
   if(!name)
     return "";
    let res= name.replace(/([^.\-\s])([A-Z])/g, (match, prev, cap) =>prev + ' ' + cap);
-   res = res.replace(/([^.\-\s])(\d+)/g, (m, prev, num) => prev + ' ' + num);
+   //res = res.replace(/([^.\-\s])(\d+)/g, (m, prev, num) => prev + ' ' + num);
    return res;
 }
   window.openYT = openYT;
