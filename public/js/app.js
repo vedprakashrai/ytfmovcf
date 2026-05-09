@@ -25,7 +25,7 @@ function expandPP(spath,title,year){
   .replace("?",".jpeg").replaceAll("~",year)
   .replace("(","%28").replace(")","%29");
 
-  return "https://upload.wikimedia.org/wikipedia/"+fpath +"/220px-"+fpath.split("/").slice(-1);
+  return "https://upload.wikimedia.org/wikipedia/"+fpath +"/250px-"+fpath.split("/").slice(-1);
 }
 
 
